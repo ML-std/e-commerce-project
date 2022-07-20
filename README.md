@@ -1,4 +1,4 @@
 # e-commerce-project
 Basic E Commerce Project with Microservice Architecture and Spring
 # Microservice Architecture
-![e-commerce drawio](https://user-images.githubusercontent.com/56198086/179939807-1ed122a7-bf12-45ad-9ceb-e3fc97df7564.png)
+![e-commerce](https://user-images.githubusercontent.com/56198086/179959222-b01335e1-7cc5-4011-b03f-a80abb85f473.png)
