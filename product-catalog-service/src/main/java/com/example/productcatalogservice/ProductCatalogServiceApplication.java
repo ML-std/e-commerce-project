@@ -1,13 +1,13 @@
-package com.example.getproductservice;
+package com.example.productcatalogservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GetProductServiceApplication {
+public class ProductCatalogServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GetProductServiceApplication.class, args);
+        SpringApplication.run(ProductCatalogServiceApplication.class, args);
     }
 
 }
