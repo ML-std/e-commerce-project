@@ -8,9 +8,9 @@ import lombok.Setter;
 @Setter
 public class ProductBaseDto {
 
-    private String name;
-    private String description;
-    private int quantity;
-    private String imageUrl;
+    protected String name;
+    protected String description;
+    protected int quantity;
+    protected String imageUrl;
 
 }
