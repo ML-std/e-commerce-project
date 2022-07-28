@@ -10,6 +10,7 @@ public interface ProductService {
     Product add(ProductBaseDto productBaseDto);
     List<ProductBaseDto> getProducts();
     ProductBaseDto getProduct(Long id);
+    ProductBaseDto getProductByName(String name);
     Product update(ProductUpdateDto productUpdateDtoDto);
     void delete(Long id);
 }

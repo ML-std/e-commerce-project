@@ -37,6 +37,12 @@ public class ProductController {
         return productService.getProduct(id);
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/name/{name}")
+    public ProductBaseDto getProductByName(@PathVariable(value = "name") String name){
+        return productService.getProductByName(name);
+    }
+
 
     @ResponseStatus(HttpStatus.OK)
     @PutMapping

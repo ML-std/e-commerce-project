@@ -40,6 +40,16 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
+    public ProductBaseDto getProductByName(String name) {
+        Optional<Product> product = productRepository.findFirstByName(name);
+        if (product.isEmpty()){
+            throw new EntityNotFoundException("Product not found");
+        }
+
+        return productMapper.productToProductBaseDto(product.get());
+    }
+
+    @Override
     public Product update(ProductUpdateDto productUpdateDto) {
         Optional<Product> productData = productRepository.findById(productUpdateDto.getId());
         if (productData.isEmpty()){

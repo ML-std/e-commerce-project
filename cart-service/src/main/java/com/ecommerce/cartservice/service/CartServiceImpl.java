@@ -2,6 +2,7 @@ package com.ecommerce.cartservice.service;
 
 import com.ecommerce.cartservice.dto.CartBaseDto;
 import com.ecommerce.cartservice.model.Cart;
+import com.ecommerce.cartservice.model.Product;
 import com.ecommerce.cartservice.repository.CartRepository;
 import com.ecommerce.cartservice.util.mapper.CartMapper;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,6 @@ public class CartServiceImpl implements CartService{
     private final CartMapper mapper;
     @Override
     public Cart initializeCart(CartBaseDto cartBaseDto) {
-
         return cartRepository.save(mapper.cartBaseDtoToCart(cartBaseDto));
     }
 
@@ -29,5 +29,21 @@ public class CartServiceImpl implements CartService{
                 throw new EntityNotFoundException("Entity is null");
         }
         return cart.get();
+    }
+
+    @Override
+    public Cart addProductToCart(Product product, String ownerEmail) {
+        product.setQuantity(0);
+        Cart cart = findByEmail(ownerEmail);
+        if (cart.getProducts().contains(product)) {
+            int index = cart.getProducts().indexOf(product);
+            cart.getProducts().get(index).setQuantity(cart.getProducts().get(index).getQuantity() + 1);
+        }
+        else {
+            product.setQuantity(1);
+            cart.getProducts().add(product);
+
+        }
+        return cartRepository.save(cart);
     }
 }
