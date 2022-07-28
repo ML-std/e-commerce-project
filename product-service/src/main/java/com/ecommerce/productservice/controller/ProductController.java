@@ -20,9 +20,9 @@ public class ProductController {
     @ResponseStatus(HttpStatus.OK)
     @PostMapping
     public Product addProduct(@RequestBody ProductBaseDto baseDto){
-
         return productService.add(baseDto);
     }
+
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
@@ -36,13 +36,19 @@ public class ProductController {
     public ProductBaseDto getProduct(@PathVariable(value = "id") Long id){
         return productService.getProduct(id);
     }
+
+
     @ResponseStatus(HttpStatus.OK)
     @PutMapping
     public Product updateProduct(@RequestBody ProductUpdateDto productUpdateDto){
         return productService.update(productUpdateDto);
     }
 
-
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable(value = "id") Long id){
+         productService.delete(id);
+    }
 
 
 }

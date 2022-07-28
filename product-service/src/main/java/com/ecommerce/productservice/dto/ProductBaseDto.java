@@ -12,5 +12,6 @@ public class ProductBaseDto {
     protected String description;
     protected int quantity;
     protected String imageUrl;
+    protected int clickCount;
 
 }

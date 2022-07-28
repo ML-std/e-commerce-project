@@ -24,5 +24,7 @@ public class Product {
 
     @Column
     private String imageUrl;
+    @Column
+    private int clickCount;
 
 }
