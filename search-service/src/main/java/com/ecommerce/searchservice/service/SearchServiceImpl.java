@@ -18,7 +18,7 @@ public class SearchServiceImpl implements SearchService{
     public List<Product> searchProducts(List<Product> products, String keyWord) {
         List<Product> searchedProducts = new ArrayList<>();
         for (Product product: products) {
-            if (product.getName().contains(keyWord)){
+            if (product.getName().toLowerCase().contains(keyWord.toLowerCase())){
                 searchedProducts.add(product);
             }
         }

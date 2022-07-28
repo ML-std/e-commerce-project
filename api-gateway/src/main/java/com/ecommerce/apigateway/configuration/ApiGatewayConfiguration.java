@@ -13,6 +13,7 @@ public class ApiGatewayConfiguration {
         return builder.routes()
                 .route(p -> p.path("/product-service/**").uri("lb://product-service"))
                 .route(p -> p.path("/search-service/**").uri("lb://search-service"))
+                .route(p -> p.path("/cart-service/**").uri("lb://cart-service"))
                 .build();
     }
 }
