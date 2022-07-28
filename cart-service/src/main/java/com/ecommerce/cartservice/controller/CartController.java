@@ -37,4 +37,10 @@ public class CartController {
 
         return cartService.addProductToCart(product.getBody(),addProductDto.getOwnerEmail());
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/{email}")
+    public Cart setCartActiveToFalse(@PathVariable(value = "email") String email ){
+        return cartService.setCartActiveToFalse(email);
+    }
 }

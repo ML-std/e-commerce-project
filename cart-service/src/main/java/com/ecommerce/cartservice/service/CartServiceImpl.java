@@ -17,6 +17,12 @@ public class CartServiceImpl implements CartService{
 
     private final CartRepository cartRepository;
     private final CartMapper mapper;
+
+    @Override
+    public void deleteCart(Long id) {
+        cartRepository.deleteById(id);
+    }
+
     @Override
     public Cart initializeCart(CartBaseDto cartBaseDto) {
         return cartRepository.save(mapper.cartBaseDtoToCart(cartBaseDto));
@@ -32,12 +38,22 @@ public class CartServiceImpl implements CartService{
     }
 
     @Override
+    public Cart setCartActiveToFalse(String email) {
+        Cart cart = findByEmail(email);
+        cart.setActive(false);
+        return cartRepository.save(cart);
+    }
+
+    @Override
     public Cart addProductToCart(Product product, String ownerEmail) {
         product.setQuantity(0);
         Cart cart = findByEmail(ownerEmail);
         if (cart.getProducts().contains(product)) {
             int index = cart.getProducts().indexOf(product);
+
             cart.getProducts().get(index).setQuantity(cart.getProducts().get(index).getQuantity() + 1);
+            cart.getProducts().get(index).setPrice(product.getPrice().multiply(cart.getProducts()
+                    .get(index).getPrice()));
         }
         else {
             product.setQuantity(1);
