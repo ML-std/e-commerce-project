@@ -27,7 +27,7 @@ public class PaymentController {
         if(paymentReceiptBaseDto.isPaid()){
             new RestTemplate().put("http://localhost:8765/cart-service/" + paymentReceiptBaseDto.getOwnerEmail(),"" );
         }
-        return paymentService.addPaymentReceipt(cartResponseEntity.getBody().getProducts(), paymentReceiptBaseDto.isPaid());
+        return paymentService.addPaymentReceipt(cartResponseEntity.getBody().getProducts(), paymentReceiptBaseDto.getOwnerEmail() , paymentReceiptBaseDto.isPaid());
     }
 
     @ResponseStatus(HttpStatus.OK)

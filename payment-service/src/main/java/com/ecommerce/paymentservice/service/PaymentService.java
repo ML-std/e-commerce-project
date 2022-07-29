@@ -9,7 +9,7 @@ import java.util.List;
 public interface PaymentService {
     List<PaymentReceipt> getPaymentReceipts();
 
-    PaymentReceipt addPaymentReceipt(List<Product> productList, boolean paid);
+    PaymentReceipt addPaymentReceipt(List<Product> productList, String ownerEmail , boolean paid);
 
     PaymentReceipt getPaymentReceipt(Long id);
 

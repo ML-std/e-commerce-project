@@ -28,7 +28,7 @@ public class PaymentServiceImpl implements PaymentService{
     }
 
     @Override
-    public PaymentReceipt addPaymentReceipt(List<Product> productList, boolean paid) {
+    public PaymentReceipt addPaymentReceipt(List<Product> productList,String ownerEmail,boolean paid) {
         BigDecimal totalCost = BigDecimal.ZERO;
         PaymentReceipt paymentReceipt = new PaymentReceipt();
         paymentReceipt.setPaid(paid);
@@ -36,6 +36,7 @@ public class PaymentServiceImpl implements PaymentService{
             log.info("product cost: " + product.getPrice());
             totalCost = totalCost.add(product.getPrice());
         }
+        paymentReceipt.setOwnerMail(ownerEmail);
         paymentReceipt.setTotalCost(totalCost);
         paymentReceipt.setProducts(productList);
         return paymentRepository.save(paymentReceipt);

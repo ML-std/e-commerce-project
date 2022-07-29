@@ -17,6 +17,8 @@ public class PaymentReceipt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
+    private String ownerMail;
 
     @ElementCollection
     private List<Product> products;
