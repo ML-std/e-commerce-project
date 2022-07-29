@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.math.BigDecimal;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -52,8 +53,8 @@ public class CartServiceImpl implements CartService{
             int index = cart.getProducts().indexOf(product);
 
             cart.getProducts().get(index).setQuantity(cart.getProducts().get(index).getQuantity() + 1);
-            cart.getProducts().get(index).setPrice(product.getPrice().multiply(cart.getProducts()
-                    .get(index).getPrice()));
+            cart.getProducts().get(index).setPrice(product.getPrice().multiply(BigDecimal.valueOf(cart.getProducts()
+                    .get(index).getQuantity())));
         }
         else {
             product.setQuantity(1);

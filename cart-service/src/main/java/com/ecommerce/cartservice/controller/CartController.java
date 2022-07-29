@@ -43,4 +43,10 @@ public class CartController {
     public Cart setCartActiveToFalse(@PathVariable(value = "email") String email ){
         return cartService.setCartActiveToFalse(email);
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("/{id}")
+    public void deleteCart(@PathVariable(value = "id") Long id){
+        cartService.deleteCart(id);
+    }
 }
