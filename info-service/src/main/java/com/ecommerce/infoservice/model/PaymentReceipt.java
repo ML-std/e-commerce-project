@@ -15,7 +15,7 @@ public class PaymentReceipt {
 
     @Column(name = "receipt_id")
     private Long id;
-    private String ownerEmail;
+    private String ownerMail;
     @ElementCollection
     private List<Product> products;
 
