@@ -20,6 +20,7 @@ public class PaymentReceipt {
     @Column
     private String ownerMail;
 
+
     @ElementCollection
     private List<Product> products;
 

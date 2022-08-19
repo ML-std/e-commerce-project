@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -16,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 public class InfoController {
 
     private final InfoService infoService;
+
 
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping("/{receiptId}")

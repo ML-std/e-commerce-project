@@ -26,7 +26,6 @@ public class CartController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/{email}")
-
     public Cart getCart(@PathVariable(value = "email") String email) throws Exception {
         return cartService.findByEmail(email);
     }

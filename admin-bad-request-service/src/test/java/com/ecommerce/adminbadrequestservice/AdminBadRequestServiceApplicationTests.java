@@ -8,6 +8,7 @@ class AdminBadRequestServiceApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }

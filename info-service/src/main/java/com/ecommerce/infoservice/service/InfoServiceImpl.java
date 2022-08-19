@@ -19,7 +19,7 @@ public class InfoServiceImpl implements InfoService{
     public Info sendEmail(PaymentReceipt paymentReceipt) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setFrom("mbarisege@gmail.com");
-        mailMessage.setTo("mbarisege@gmail.com");//normally this should be replaced with paymentReceipt.getOwnerMail()
+        mailMessage.setTo(paymentReceipt.getOwnerMail());//normally this should be replaced with paymentReceipt.getOwnerMail()
         mailMessage.setSubject("Receipt:" + paymentReceipt.getId());
         mailMessage.setText(paymentReceipt.toString());
         mailSender.send(mailMessage);

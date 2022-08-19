@@ -20,6 +20,7 @@ import java.util.List;
 public class PaymentController {
     private final PaymentService paymentService;
 
+
     @ResponseStatus(HttpStatus.OK)
     @PostMapping
     public PaymentReceipt addPaymentReceipt(@RequestBody PaymentReceiptBaseDto paymentReceiptBaseDto){

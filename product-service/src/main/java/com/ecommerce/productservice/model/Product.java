@@ -1,6 +1,7 @@
 package com.ecommerce.productservice.model;
 
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -29,5 +30,6 @@ public class Product {
     private int clickCount;
     @Column
     private BigDecimal price;
+
 
 }
