@@ -26,7 +26,13 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    //Docker
+    implementation 'org.springframework.cloud:spring-cloud-starter-sleuth:3.1.3'
+    implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin:3.1.3'
+    implementation 'com.rabbitmq:amqp-client:5.15.0'
 }
+
 
 tasks.named('test') {
     useJUnitPlatform()
