@@ -1,5 +1,26 @@
 version: '3.7'
 services:
+  zipkin-server:
+    image: openzipkin/zipkin:2.23
+    mem_reservation: 300m
+    ports:
+      - "9411:9411"
+    networks:
+      - e-commerce
+    environment:
+      RABBIT_URI: amqp://guest:guest@rabbitmq:5672
+    restart: always
+
+
+  rabbitmq:
+    image: rabbitmq:3.8.12-management
+    mem_reservation: 300m
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - e-commerce
+
   eureka-server:
 
     container_name: eureka-server
@@ -9,6 +30,10 @@ services:
       - "8761:8761"
     networks:
       - e-commerce
+    environment:
+      SPRING_ZIPKIN_BASEURL: http://zipkin-server:9411/
+      RABBIT_URI: amqp://guest:guest@rabbitmq:5672
+      SPRING_RABBITMQ_HOST: rabbitmq
 
 
   product-service:
@@ -22,6 +47,11 @@ services:
       - e-commerce
     environment:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka
+      SPRING_ZIPKIN_BASEURL: http://zipkin-server:9411/
+      RABBIT_URI: amqp://guest:guest@rabbitmq:5672
+      SPRING_RABBITMQ_HOST: rabbitmq
+
+
 
   api-gateway:
     container_name: api-gateway
@@ -33,6 +63,10 @@ services:
       - e-commerce
     environment:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka
+      SPRING_ZIPKIN_BASEURL: http://zipkin-server:9411/
+      RABBIT_URI: amqp://guest:guest@rabbitmq:5672
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_ZIPKIN_SENDER_TYPE: rabbit
 
 
 
