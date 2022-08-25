@@ -1,0 +1,40 @@
+version: '3.7'
+services:
+  eureka-server:
+
+    container_name: eureka-server
+    image: eureka-server
+    mem_reservation: 700m
+    ports:
+      - "8761:8761"
+    networks:
+      - e-commerce
+
+
+  product-service:
+
+    container_name: product-service
+    image: product-service
+    mem_reservation: 700m
+    ports:
+      - "8000:8000"
+    networks:
+      - e-commerce
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka
+
+  api-gateway:
+    container_name: api-gateway
+    image: api-gateway
+    mem_reservation: 700m
+    ports:
+      - "8765:8765"
+    networks:
+      - e-commerce
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka
+
+
+
+networks:
+  e-commerce:
